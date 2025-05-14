@@ -43,7 +43,7 @@ function App() {
       if (newSandboxState) {
         await initSandbox();
       } else {
-        await finishSandbox();
+        confirm("Se você voltar para a API, todos os filmes salvos serão deletados. Deseja continuar?") && await finishSandbox();
       }
     } catch (error) {
       console.error('Erro ao alternar modo:', error);
