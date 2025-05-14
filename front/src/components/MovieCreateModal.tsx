@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Modal, Button, Form, InputGroup } from "react-bootstrap";
-import { type IRequest } from "../services";
 import type { AgeRating, Genre } from "../types";
+import type { IRequest } from "../interface";
 
 type Props = {
   show: boolean;
