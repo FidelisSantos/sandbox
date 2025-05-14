@@ -1,7 +1,8 @@
 import initSql from 'sql.js'
+import { url } from './api';
+
 export class SandboxService {
     static db: any;
-    static url = "http://localhost:5000";
 
     private static async initializeDb() {
         if (!this.db) {
@@ -72,7 +73,7 @@ export class SandboxService {
     static async createTablesToMovies() {
         await this.initializeDb();
         try {
-            const response = await fetch(`${this.url}/sandbox/describe`);
+            const response = await fetch(`${url}/sandbox/describe`);
             const schema = await response.json();
             const db = await this.getDb();
             const foreignKeys = this.getForeignKeys(schema);
@@ -121,7 +122,7 @@ export class SandboxService {
 
     static async populateTables() {
         try {
-            const response = await fetch(`${this.url}/sandbox/populate`);
+            const response = await fetch(`${url}/sandbox/populate`);
             const data = await response.json();
             const db = await this.getDb();
 

@@ -1,43 +1,7 @@
 import { SandboxService } from "./sandbox";
-
-const url = "http://localhost:5000";
-
-type CreateMovie = {
-    title: string;
-    description: string;
-    img_url: string;
-    genre_id: number;
-    age_rating_id: number;
-}
-
-type Movie = {
-    id: number;
-    title: string;
-    description: string;
-    img_url: string;
-    genre: Genre;
-    age_rating: AgeRating;
-}
-
-type Genre = {
-    id: number;
-    name: string;
-}
-
-type AgeRating = {
-    id: number;
-    name: string;
-}
-
-export interface IRequest {
-    getMovies: () => Promise<Movie[]>;
-    createMovie: (movie: CreateMovie) => Promise<Movie>;
-    getGenres: () => Promise<Genre[]>;
-    createGenre: (name: string) => Promise<Genre>;
-    getAgeRatings: () => Promise<AgeRating[]>;
-    deleteMovie: (id: number) => Promise<void>;
-}
-
+import { url } from "./api";
+import type { AgeRating, CreateMovie, Genre, Movie } from "../types";
+import type { IRequest } from "../interface";
 const api: IRequest = {
     getMovies: async () => {
         const response = await fetch(`${url}/movies`);

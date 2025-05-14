@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Modal, Button, Form, InputGroup } from "react-bootstrap";
 import { type IRequest } from "../services";
-type Genre = { id: number; name: string };
-type AgeRating = { id: number; name: string };
+import type { AgeRating, Genre } from "../types";
 
 type Props = {
   show: boolean;
@@ -112,8 +111,6 @@ export default function MovieCreateModal({ show, onHide, onCreated, request }: P
           </Modal.Footer>
         </Form>
       </Modal>
-
-      {/* Modal para adicionar novo gênero */}
       <Modal show={showGenreModal} onHide={() => setShowGenreModal(false)}>
         <Form onSubmit={handleAddGenre}>
           <Modal.Header closeButton>

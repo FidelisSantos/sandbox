@@ -1,11 +1,11 @@
 import { io, Socket } from 'socket.io-client';
-
+import { url } from './api';
 class SocketService {
   private socket: Socket | null = null;
 
   connect() {
     if (!this.socket) {
-      this.socket = io('http://localhost:5000');
+      this.socket = io(url);
 
       this.socket.on('connect', () => {
         console.log('Conectado ao servidor de socket');

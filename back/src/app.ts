@@ -37,7 +37,7 @@ async function connectDB() {
 app.use(express.json());
 
 app.get('/', (_req, res) => {
-  res.send('Hello, TypeScript!');
+  res.send('Online');
 });
 
 app.use("/age_ratings", ageRatingRoutes);
