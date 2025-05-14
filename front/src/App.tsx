@@ -130,12 +130,12 @@ function App() {
           {movies.map((movie) => (
             <Col md={4} key={movie.id} className="mb-4">
               <Card>
-                <Card.Img variant="top" src={movie.img_url} />
+                <Card.Img variant="top" style={{maxHeight: "300px"}} src={movie.img_url} />
                 <Card.Body>
-                  <Card.Title>{movie.title}</Card.Title>
-                  <Card.Text>{movie.description}</Card.Text>
-                  <Card.Text>{movie.genre.name}</Card.Text>
-                  <Card.Text>{movie.age_rating.name}</Card.Text>
+                  <Card.Title>Titulo: {movie.title}</Card.Title>
+                  <Card.Text>Descrição: {movie.description}</Card.Text>
+                  <Card.Text>Gênero: {movie.genre.name}</Card.Text>
+                  <Card.Text>Classificação: {movie.age_rating.name}</Card.Text>
                   
                 </Card.Body>
                 <div className="d-flex justify-content-between">
