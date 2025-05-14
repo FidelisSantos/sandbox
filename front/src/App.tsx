@@ -88,7 +88,7 @@ function App() {
 
 
   async function handleDeleteMovie(id: number) {
-    await request?.deleteMovie(id);
+    confirm("Tem certeza que deseja deletar este filme?") && await request?.deleteMovie(id);
     await request?.getMovies().then(setMovies);
   }
 
@@ -138,8 +138,8 @@ function App() {
                   <Card.Text>Classificação: {movie.age_rating.name}</Card.Text>
                   
                 </Card.Body>
-                <div className="d-flex justify-content-between">
-                  <Button onClick={() => handleDeleteMovie(movie.id)}>Delete Movie</Button>
+                <div className="d-flex justify-content-end">
+                  <Button variant="danger" onClick={() => handleDeleteMovie(movie.id)}>Delete Movie</Button>
                 </div>
               </Card>
             </Col>
