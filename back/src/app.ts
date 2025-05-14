@@ -4,11 +4,12 @@ import { Server } from "socket.io";
 import cors from 'cors';
 
 import { sequelize } from '../database';
+import { registerSocketEvents } from './events';
 
 import ageRatingRoutes from './routes/AgeRatingRoutes';
 import movieRoutes from './routes/MovieRoutes'; 
 import genreRoutes from './routes/GenreRoutes';
-import { registerSocketEvents } from './events';
+import sandboxRoutes from './routes/SanboxRoutes';
 
 const app = express();
 app.use(cors({
@@ -42,6 +43,7 @@ app.get('/', (_req, res) => {
 app.use("/age_ratings", ageRatingRoutes);
 app.use("/movies", movieRoutes);
 app.use("/genres", genreRoutes);
+app.use("/sandbox", sandboxRoutes);
 
 server.listen(PORT, async () => {
   await connectDB();

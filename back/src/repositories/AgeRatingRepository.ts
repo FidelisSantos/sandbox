@@ -16,4 +16,8 @@ export class AgeRatingRepository {
     async find(id: number): Promise<AgeRating | null> {
         return AgeRating.findByPk(id);
     }
+
+    async describe() {
+        return AgeRating.describe();
+    }
 }

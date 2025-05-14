@@ -6,21 +6,21 @@ module.exports = {
       {
         title: 'Filme A',
         description: 'Descrição do Filme A',
-        img_url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpt.wikipedia.org%2Fwiki%2FPranksta_Rap&psig=AOvVaw3paGSondYnZsrdfqiz2YYY&ust=1747272967557000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJCll5vpoY0DFQAAAAAdAAAAABAE',
+        img_url: 'https://i.pinimg.com/736x/e8/2d/4b/e82d4b4e5b60ba55475c1c50279d9f95.jpg',
         genre_id: 1,
         age_rating_id: 1
       },
       {
         title: 'Filme B',
         description: 'Descrição do Filme B',
-        img_url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpt.wikipedia.org%2Fwiki%2FPranksta_Rap&psig=AOvVaw3paGSondYnZsrdfqiz2YYY&ust=1747272967557000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJCll5vpoY0DFQAAAAAdAAAAABAE',
+        img_url: 'https://i.pinimg.com/736x/e8/2d/4b/e82d4b4e5b60ba55475c1c50279d9f95.jpg',
         genre_id: 2,
         age_rating_id: 2
       },
       {
         title: 'Filme C',
         description: 'Descrição do Filme C',
-        img_url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpt.wikipedia.org%2Fwiki%2FPranksta_Rap&psig=AOvVaw3paGSondYnZsrdfqiz2YYY&ust=1747272967557000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJCll5vpoY0DFQAAAAAdAAAAABAE',
+        img_url: 'https://i.pinimg.com/736x/e8/2d/4b/e82d4b4e5b60ba55475c1c50279d9f95.jpg',
         genre_id: 3,
         age_rating_id: 3
       }

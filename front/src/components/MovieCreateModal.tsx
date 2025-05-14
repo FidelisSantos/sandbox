@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Modal, Button, Form, InputGroup } from "react-bootstrap";
-
+import { type IRequest } from "../services";
 type Genre = { id: number; name: string };
 type AgeRating = { id: number; name: string };
 
@@ -8,9 +8,10 @@ type Props = {
   show: boolean;
   onHide: () => void;
   onCreated: () => void;
+  request: IRequest;
 };
 
-export default function MovieCreateModal({ show, onHide, onCreated }: Props) {
+export default function MovieCreateModal({ show, onHide, onCreated, request }: Props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imgUrl, setImgUrl] = useState("");
@@ -22,27 +23,20 @@ export default function MovieCreateModal({ show, onHide, onCreated }: Props) {
   const [newGenre, setNewGenre] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/genres")
-      .then((res) => res.json())
-      .then(setGenres);
-    fetch("http://localhost:5000/age_ratings")
-      .then((res) => res.json())
-      .then(setAgeRatings);
+    request.getGenres().then(setGenres);
+    request.getAgeRatings().then(setAgeRatings);
   }, [show, showGenreModal]);
 
   function handleCreateMovie(e: React.FormEvent) {
     e.preventDefault();
-    fetch("http://localhost:5000/movies", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    console.log(title, description, imgUrl, genreId, ageRatingId);
+    request.createMovie({
         title,
         description,
         img_url: imgUrl,
-        genre_id: genreId,
-        age_rating_id: ageRatingId,
-      }),
-    }).then(() => {
+        genre_id: genreId as number,
+        age_rating_id: ageRatingId as number,
+      }).then(() => {
       onCreated();
       onHide();
       setTitle("");
@@ -55,17 +49,11 @@ export default function MovieCreateModal({ show, onHide, onCreated }: Props) {
 
   function handleAddGenre(e: React.FormEvent) {
     e.preventDefault();
-    fetch("http://localhost:5000/genres", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: newGenre }),
-    })
-      .then((res) => res.json())
-      .then((genre) => {
-        setGenres((prev) => [...prev, genre]);
-        setGenreId(genre.id);
-        setShowGenreModal(false);
-        setNewGenre("");
+    request.createGenre(newGenre).then((genre) => {
+      setGenres((prev) => [...prev, genre]);
+      setGenreId(genre.id);
+      setShowGenreModal(false);
+      setNewGenre("");
       });
   }
 

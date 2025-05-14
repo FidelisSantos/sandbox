@@ -1,3 +1,5 @@
+import { Genre } from "../models/Genre";
+import { AgeRating } from "../models/AgeRating";
 import { Movie } from "../models/Movie";
 
 export class MovieRepository {
@@ -12,10 +14,25 @@ export class MovieRepository {
     }
 
     async get(): Promise<Movie[]> {
-        return await Movie.findAll()
+        return await Movie.findAll({
+            include: [
+                {       
+                    model: Genre,
+                    as: 'genre'
+                },
+                {
+                    model: AgeRating,
+                    as: 'age_rating'
+                }
+            ]
+        });
     }
 
     async find(id: number): Promise<Movie | null> {
         return await Movie.findByPk(id)
+    }
+
+    async describe() {
+        return await Movie.describe();
     }
 }

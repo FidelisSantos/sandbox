@@ -16,4 +16,8 @@ export class GenreRepository {
   async find(id: number): Promise<Genre | null> {
     return await Genre.findByPk(id);
   }
+
+  async describe() {
+    return await Genre.describe();
+  }
 }
