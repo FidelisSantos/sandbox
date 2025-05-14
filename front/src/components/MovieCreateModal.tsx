@@ -29,7 +29,6 @@ export default function MovieCreateModal({ show, onHide, onCreated, request }: P
 
   function handleCreateMovie(e: React.FormEvent) {
     e.preventDefault();
-    console.log(title, description, imgUrl, genreId, ageRatingId);
     request.createMovie({
         title,
         description,
